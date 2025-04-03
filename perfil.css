@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.perfil-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+.banner {
+    width: 100%;
+    height: 150px;
+    background-color: lightgray;
+}
+
+.perfil-info {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+}
+
+.foto-usuario {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.dados h2 {
+    margin-bottom: 5px;
+}
+
+.seguidores span {
+    margin-right: 15px;
+}
+
+.editar {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.publicacoes {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+}
