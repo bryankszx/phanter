@@ -5,22 +5,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     const bannerImg = document.getElementById("bannerImg");
     const seguidoresCount = document.getElementById("seguidoresCount");
     const seguindoCount = document.getElementById("seguindoCount");
-
+  
     try {
-        const response = await fetch("https://back-spider.vercel.app/perfil");
-        if (!response.ok) {
-            throw new Error("Erro ao carregar perfil.");
-        }
-
-        const data = await response.json();
-
-        perfilNome.textContent = data.nome;
-        perfilBio.textContent = data.bio;
-        perfilImg.src = data.fotoPerfil || "default-profile.png";
-        bannerImg.src = data.banner || "default-banner.jpg";
-        seguidoresCount.textContent = data.seguidores;
-        seguindoCount.textContent = data.seguindo;
+      const response = await fetch("https://back-spider.vercel.app/perfil");
+      if (!response.ok) {
+        throw new Error("Erro ao carregar perfil.");
+      }
+  
+      const data = await response.json();
+  
+      perfilNome.textContent = data.nome;
+      perfilBio.textContent = data.bio;
+      perfilImg.src = data.fotoPerfil || "https://preview.redd.it/is-there-a-sniper-default-pfp-that-someone-made-v0-78az45pd9f6c1.jpg?width=396&format=pjpg&auto=webp&s=5be4618605b25e0546d72dff52a7b897c3d4e1d4";
+  
+      if (data.banner) {
+        bannerImg.style.backgroundImage = `url('${data.banner}')`;
+        bannerImg.style.backgroundSize = "cover";
+        bannerImg.style.backgroundPosition = "center";
+      }
+  
+      seguidoresCount.textContent = data.seguidores;
+      seguindoCount.textContent = data.seguindo;
+  
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-});
+  });
+   

@@ -2,63 +2,97 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  
+  body {
     font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: black;
+    background-color: #000;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.perfil-container {
+  }
+  
+  .profile-container {
+    max-width: 900px;
+    margin: 20px auto;
+  }
+  
+  .banner {
     width: 100%;
-    max-width: 800px;
-}
-
-.banner {
-    width: 100%;
-    height: 150px;
-    background-color: lightgray;
-}
-
-.perfil-info {
+    height: 300px;
+    background-color: #ccc; 
+    border-radius: 10px;
+  }
+  
+  .profile-info {
     display: flex;
-    align-items: center;
-    background-color: black;
+    justify-content: space-between; /* empurra o botão pro canto */
+    align-items: flex-start;
+    position: relative;
     padding: 20px;
-}
-
-.foto-usuario {
-    width: 100px;
-    height: 100px;
-    background-color: gray;
+    margin-top: -50px;
+    background-color: #000;
+    border-radius: 10px;
+  }
+  
+  .profile-picture {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
+    border: 5px solid #fff;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .profile-details {
+    margin-left: 180px;
+    padding-top: 20px;
+    flex-grow: 1;
+  }
+  
+  .profile-details h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details p {
+    color: #ccc;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .stats span {
     margin-right: 20px;
-}
-
-.dados h2 {
-    margin-bottom: 5px;
-}
-
-.seguidores span {
-    margin-right: 15px;
-}
-
-.editar {
-    margin-left: auto;
-    padding: 5px 10px;
-    background-color: white;
-    color: black;
+    font-size: 1.2em;
+    color: white;
+  }
+  
+  .edit-btn {
+    background-color: #1da1f2;
+    color: white;
     border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
     cursor: pointer;
-}
-
-.publicacoes {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 20px;
-}
+    height: fit-content;
+    margin-top: 20px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #1991c6;
+  }
+  .banner {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+    border-radius: 10px;
+    background-image: url('https://pbs.twimg.com/media/Efplx56XsAAEGWe.jpg');
+    background-size: cover;
+    background-position: center;
+  }

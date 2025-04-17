@@ -18,10 +18,15 @@ document.getElementById('FormularioLogin').addEventListener('submit', async func
         const response = await fetch('https://back-spider.vercel.app/login', options);
         const responseData = await response.json();
 
-        console.log('Resposta da API:', responseData); // Debug para verificar o que a API retorna
+        console.log('Resposta da API:', responseData); // debug
 
         if (response.ok) {
-            localStorage.setItem('userData', JSON.stringify(responseData)); 
+            // salva o token
+            localStorage.setItem('token', responseData.token);
+            
+            // opcional: salvar também o nome do usuário pra exibir em outras telas
+            localStorage.setItem('userData', JSON.stringify(responseData.usuario));
+
             alert('Login feito com sucesso!!');
             window.location.href = 'perfil.html';
         } else {
