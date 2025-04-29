@@ -1,39 +1,52 @@
-'use strict'
-
-document.getElementById('FormularioLogin').addEventListener('submit', async function (event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email: email, senha: senha })
-    };
-
-    try {
-        const response = await fetch('https://back-spider.vercel.app/login', options);
-        const responseData = await response.json();
-
-        console.log('Resposta da API:', responseData); // debug
-
-        if (response.ok) {
-            // salva o token
-            localStorage.setItem('token', responseData.token);
-            
-            // opcional: salvar também o nome do usuário pra exibir em outras telas
-            localStorage.setItem('userData', JSON.stringify(responseData.usuario));
-
-            alert('Login feito com sucesso!!');
-            window.location.href = 'perfil.html';
-        } else {
-            alert('Erro: ' + (responseData.message || 'Não foi possível realizar o login!'));
-        }
-    } catch (error) {
-        console.error('Erro na requisição:', error);
-        alert('Erro ao conectar com o servidor. Tente novamente mais tarde.');
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("FormularioLogin"); // Corrigido para "FormularioLogin"
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("senha");  // Corrigido para "senha", conforme o HTML
+  
+    async function submitForm(event) {
+      event.preventDefault();
+  
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+  
+      const formData = {
+        email: email,
+        senha: password
+      };
+  
+      const loginUrl = "https://back-spider.vercel.app/login"; // URL do servidor de login
+  
+      try {
+        const response = await fetch(loginUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok && data.success) {
+            console.log("Login bem-sucedido:", data);
+          
+            // Armazenar os dados do usuário corretamente
+            localStorage.setItem("userData", JSON.stringify(data.user));
+          
+            // Redirecionar para o perfil com o ID correto
+            window.location.href = `perfil.html?id=${data.user.id}`;
+          } else {
+            console.error('Erro ao realizar login:', data);
+            alert(data.message || "Erro ao realizar login. Tente novamente.");
+          }          
+      } catch (error) {
+        console.error('Erro ao enviar dados:', error);
+        alert("Erro de rede ou no servidor.");
+      } finally {
+        emailInput.value = "";
+        passwordInput.value = "";
+      }
     }
+  
+    form.addEventListener("submit", submitForm);
 });

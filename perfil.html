@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil</title>
+  <title>Perfil Estilo Twitter</title>
   <link rel="stylesheet" href="perfil.css">
-  <style>
-   
-  </style>
 </head>
 <body>
-  <div class="profile-container">
-    <div class="banner" id="bannerImg"></div>
+  <aside class="sidebar">
+    <div class="logo-container">
+      <img src="./img/panther.png" alt="Logo" class="logo">
+    </div>    
+    <nav class="menu">
+      <div class="menu-item" onclick="irParaHome()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" class="icon">
+        <span>Home</span>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="profile-header">
+      <label class="banner" id="bannerImg">
+        <input type="file" id="bannerInput" accept="image/*" hidden>
+        <span class="overlay-text">Alterar banner</span>
+      </label>
+
+      <label class="profile-picture" id="perfilImgLabel">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <span class="overlay-text">Alterar foto</span>
+        <img id="perfilImg" src="" alt="Foto de Perfil">
+      </label>
+    </div>
 
     <div class="profile-info">
-      <div class="profile-picture">
-        <img id="perfilImg" src="https://preview.redd.it/is-there-a-sniper-default-pfp-that-someone-made-v0-78az45pd9f6c1.jpg?width=396&format=pjpg&auto=webp&s=5be4618605b25e0546d72dff52a7b897c3d4e1d4" alt="Foto de Perfil">
-      </div>
-      <div class="profile-details">
-        <h1 id="perfilNome">Edukof</h1>
-        <p id="perfilBio">@edukof</p>
-        <div class="stats">
-          <span><strong id="seguidoresCount">500</strong> Seguidores</span>
-          <span><strong id="seguindoCount">200</strong> Seguindo</span>
-        </div>
-      </div>
-      <button class="edit-btn">Editar Perfil</button>
+      <h2 id="nomeCompleto"></h2>
+      <div class="username" id="username">@NomeDoUsuario</div>
+      <div class="dataa" id="dataa">Criado em: <br>DD/MM/AAAA</div>
+      <div class="usuario_nome" id="NomeDoUsuario">Eduardo Fernando</div>
+      <div class="posts" id="posts">O usuário ainda não fez nenhum post...</div>      
+      <p><strong id="seguindoCount">0</strong> seguindo <strong id="seguidoresCount">0</strong> seguidores</p>
     </div>
-  </div>
+  </main>
 
   <script src="perfil.js"></script>
 </body>
